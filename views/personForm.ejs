@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Person Form</title>
+</head>
+<body>
+  <h1><%= person._id ? 'Edit Person' : 'Add Person' %></h1>
+  <form action="<%= action %>" method="POST">
+    <input type="hidden" name="_method" value="<%= method %>">
+    <label for="name">Name</label>
+    <input type="text" name="name" value="<%= person.name %>" required>
+    <br>
+    <label for="age">Age</label>
+    <input type="number" name="age" value="<%= person.age %>" required>
+    <br>
+    <label for="gender">Gender</label>
+    <select name="gender" required>
+      <option value="Male" <%= person.gender === 'Male' ? 'selected' : '' %>>Male</option>
+      <option value="Female" <%= person.gender === 'Female' ? 'selected' : '' %>>Female</option>
+    </select>
+    <br>
+    <label for="mobileNumber">Mobile Number</label>
+    <input type="text" name="mobileNumber" value="<%= person.mobileNumber %>" required pattern="[0-9]{10}">
+    <br>
+    <button type="submit"><%= person._id ? 'Update' : 'Create' %></button>
+  </form>
+  <a href="/">Back to List</a>
+</body>
+</html>
